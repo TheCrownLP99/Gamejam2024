@@ -17,6 +17,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private float astroidsCooldownPreset = 10;
     private float astroidsCooldown;
     [SerializeField] private Slider astroidsSlider;
+    [SerializeField] private GameObject astroidsGame;
 
     [Header("Earthquake Game")]
     [SerializeField] private float earthquakeCooldownPreset = 9;
@@ -98,6 +99,7 @@ public class GameMaster : MonoBehaviour
         if (astroidsCooldown >= astroidsCooldownPreset)
         {
             astroidsCooldown = 0;
+            astroidsGame.SetActive(true);
         }
     }
     public void Earthquake()
