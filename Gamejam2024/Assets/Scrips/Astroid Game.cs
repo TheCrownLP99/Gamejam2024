@@ -10,6 +10,8 @@ public class AstroidGame : MonoBehaviour
     [SerializeField] private AudioSource sound;
     [SerializeField] private GameObject minigame;
 
+    [SerializeField] private float death = 100000;
+
     [SerializeField] private Slider planetSlider;
     [SerializeField] private Transform spawnPositionLeft;
     [SerializeField] private Transform spawnPositionRight;
@@ -24,9 +26,13 @@ public class AstroidGame : MonoBehaviour
     private float timeAstriods = 0;
     private float timeBetweenAstriots = 0;
 
+    private bool hascklickt = false;
+
     [SerializeField] private float timeBetweenAstriotsDefult = 1;
 
-    public int hitAstroids;
+    private int hitAstroids;
+
+    private GameMaster gameMaster;
 
     // Start is called before the first frame update
 
@@ -37,6 +43,8 @@ public class AstroidGame : MonoBehaviour
         i = 0;
         destructionSlider.maxValue = astoid;
         timeBetweenAstriots = timeBetweenAstriotsDefult;
+        hascklickt = false;
+        gameMaster = GameObject.Find("Gamemaster").GetComponent<GameMaster>();
     }
 
     void OnEnable()
@@ -46,17 +54,22 @@ public class AstroidGame : MonoBehaviour
         i = 0;
         destructionSlider.maxValue = astoid;
         timeBetweenAstriots = timeBetweenAstriotsDefult;
+        hascklickt = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         destructionSlider.value = hitAstroids;
-        timeAstriods = timeAstriods + Time.deltaTime;
+        if (hascklickt == true)
+        {
+            timeAstriods = timeAstriods + Time.deltaTime;
+
+        }
         Debug.Log("test");
         if (timeAstriods >= timeBetweenAstriots)
         {
-            if (i < astoid)
+            if (i < astoid && hascklickt == true)
             {
                 Debug.Log("test1");
                 i++;
@@ -65,12 +78,15 @@ public class AstroidGame : MonoBehaviour
             }
             else if (timeAstriods >= 2)
             {
+                float hitCalualted = hitAstroids / 2;
+                gameMaster.population = gameMaster.population - (death * hitCalualted);
                 minigame.SetActive(false);
             }
         }
     }
     private void SpawnAstroids()
     {
+
         Vector3 randomSpawnPosition = new Vector3(Random.Range(spawnPositionLeft.position.x, spawnPositionRight.position.x), spawnPositionLeft.position.y, spawnPositionLeft.position.z);
         Instantiate(astoidObject, randomSpawnPosition, Quaternion.identity);
     }
@@ -80,6 +96,11 @@ public class AstroidGame : MonoBehaviour
         sound.Play();
         hitAstroids++;
         timeBetweenAstriots = timeBetweenAstriots - timeDown;
+    }
+
+    public void klicked()
+    {
+        hascklickt = true;
     }
 
 }

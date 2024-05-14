@@ -23,6 +23,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private float earthquakeCooldownPreset = 9;
     private float earthquakeCooldown;
     [SerializeField] private Slider earthquakeSlider;
+    [SerializeField] private GameObject earthquakeGame;
 
     [Header("Tronado Game")]
     [SerializeField] private float tornadoCooldownPreset = 8;
@@ -70,7 +71,7 @@ public class GameMaster : MonoBehaviour
         tornadoCooldown = tornadoCooldown + Time.deltaTime;
         tsunamiCooldown = tsunamiCooldown + Time.deltaTime;
 
-        populationText.text = "Population: " + population.ToString("n0");
+        populationText.text = "" + population.ToString("n0");
         populationSlider.value = population;
         astroidsSlider.value = astroidsCooldown;
         earthquakeSlider.value = earthquakeCooldown;
@@ -107,6 +108,7 @@ public class GameMaster : MonoBehaviour
         if (earthquakeCooldown >= earthquakeCooldownPreset)
         {
             earthquakeCooldown = 0;
+            earthquakeGame.SetActive(true);
         }
     }
     public void Tornado()
