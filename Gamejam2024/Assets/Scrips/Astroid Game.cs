@@ -20,6 +20,8 @@ public class AstroidGame : MonoBehaviour
 
     [SerializeField] private int astoid = 10;
 
+    [SerializeField] private ParticleSystem explosion;
+
     [SerializeField] private float timeDown = 0.01f;
 
     private int i = 0;
@@ -96,6 +98,7 @@ public class AstroidGame : MonoBehaviour
         sound.Play();
         hitAstroids++;
         timeBetweenAstriots = timeBetweenAstriots - timeDown;
+        explosion.Play();
     }
 
     public void klicked()

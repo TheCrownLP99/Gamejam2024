@@ -7,11 +7,13 @@ using TMPro;
 public class GameMaster : MonoBehaviour
 {
     public float population;
-    private float playTime = 0;
+    public float playTime = 0;
     [SerializeField] private TMPro.TMP_Text populationText;
     [SerializeField] private Slider populationSlider;
 
     [SerializeField] private TMPro.TMP_Text timerText;
+
+    [SerializeField] private GameObject endMenu;
 
     [Header("Astroids Game")]
     [SerializeField] private float astroidsCooldownPreset = 10;
@@ -86,7 +88,7 @@ public class GameMaster : MonoBehaviour
 
     private void EndGame()
     {
-
+        endMenu.SetActive(true);
     }
 
     public void ExitGame()
