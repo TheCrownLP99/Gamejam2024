@@ -6,6 +6,10 @@ using TMPro;
 
 public class GameMaster : MonoBehaviour
 {
+    public bool textEnded;
+
+    [SerializeField] private GameObject startText;
+
     public float population;
     public float playTime = 0;
     [SerializeField] private TMPro.TMP_Text populationText;
@@ -40,6 +44,8 @@ public class GameMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startText.SetActive(true);
+
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 
@@ -61,17 +67,20 @@ public class GameMaster : MonoBehaviour
     {
         if (population <= 0)
         {
+            population = 0;
+        }
+        if (population <= 0 && textEnded == true)
+        {
             EndGame();
         }
-        else
+        else if (textEnded == true)
         {
             playTime = playTime + Time.deltaTime;
+            astroidsCooldown = astroidsCooldown + Time.deltaTime;
+            earthquakeCooldown = earthquakeCooldown + Time.deltaTime;
+            tornadoCooldown = tornadoCooldown + Time.deltaTime;
+            tsunamiCooldown = tsunamiCooldown + Time.deltaTime;
         }
-
-        astroidsCooldown = astroidsCooldown + Time.deltaTime;
-        earthquakeCooldown = earthquakeCooldown + Time.deltaTime;
-        tornadoCooldown = tornadoCooldown + Time.deltaTime;
-        tsunamiCooldown = tsunamiCooldown + Time.deltaTime;
 
         populationText.text = "" + population.ToString("n0");
         populationSlider.value = population;
@@ -102,6 +111,7 @@ public class GameMaster : MonoBehaviour
         if (astroidsCooldown >= astroidsCooldownPreset)
         {
             astroidsCooldown = 0;
+            textEnded = false;
             astroidsGame.SetActive(true);
         }
     }
@@ -110,6 +120,7 @@ public class GameMaster : MonoBehaviour
         if (earthquakeCooldown >= earthquakeCooldownPreset)
         {
             earthquakeCooldown = 0;
+            textEnded = false;
             earthquakeGame.SetActive(true);
         }
     }

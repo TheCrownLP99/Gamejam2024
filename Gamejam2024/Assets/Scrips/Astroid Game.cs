@@ -6,6 +6,8 @@ using TMPro;
 
 public class AstroidGame : MonoBehaviour
 {
+    [SerializeField] private GameObject endText;
+
     [SerializeField] private Slider destructionSlider;
     [SerializeField] private AudioSource sound;
     [SerializeField] private GameObject minigame;
@@ -32,7 +34,7 @@ public class AstroidGame : MonoBehaviour
 
     [SerializeField] private float timeBetweenAstriotsDefult = 1;
 
-    private int hitAstroids;
+    public int hitAstroids;
 
     private GameMaster gameMaster;
 
@@ -80,8 +82,16 @@ public class AstroidGame : MonoBehaviour
             }
             else if (timeAstriods >= 2)
             {
+                gameMaster.textEnded = false;
                 float hitCalualted = hitAstroids / 2;
                 gameMaster.population = gameMaster.population - (death * hitCalualted);
+                planetSlider.value = 0.5f;
+                timeAstriods = 0;
+                i = 0;
+                destructionSlider.maxValue = astoid;
+                timeBetweenAstriots = timeBetweenAstriotsDefult;
+                hascklickt = false;
+                endText.SetActive(true);
                 minigame.SetActive(false);
             }
         }

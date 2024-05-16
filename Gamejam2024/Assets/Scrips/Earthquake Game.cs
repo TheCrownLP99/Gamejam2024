@@ -6,6 +6,8 @@ using TMPro;
 
 public class EarthquakeGame : MonoBehaviour
 {
+    [SerializeField] private GameObject endText;
+
     [SerializeField] private Slider timeSlider;
     [SerializeField] private AudioSource sound;
     [SerializeField] private GameObject minigame;
@@ -18,6 +20,8 @@ public class EarthquakeGame : MonoBehaviour
     [SerializeField] private GameObject land4;
     [SerializeField] private GameObject land5;
     [SerializeField] private GameObject land6;
+
+    [SerializeField] private TMPro.TMP_Text hitText;
 
     [SerializeField] private float minigameTime= 10f;
 
@@ -55,14 +59,26 @@ public class EarthquakeGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        t = t - Time.deltaTime;
+        if (hascklickt == true)
+        {
+            t = t - Time.deltaTime;
+        }
         timeSlider.value = t;
+        hitText.text = "" + perfectKlicks;
 
         if (t <= 0)
         {
+            gameMaster.textEnded = false;
             randomNumber = Random.Range(0, 6);
             float hitCalualted = perfectKlicks / 2;
             gameMaster.population = gameMaster.population - (death * hitCalualted);
+            endText.SetActive(true);
+            land1.SetActive(false);
+            land2.SetActive(false);
+            land3.SetActive(false);
+            land4.SetActive(false);
+            land5.SetActive(false);
+            land6.SetActive(false);
             minigame.SetActive(false);
         }
     }
@@ -74,6 +90,7 @@ public class EarthquakeGame : MonoBehaviour
         if (randomNumber == 0)
         {
             perfectKlicks++;
+            sound.Play();
             while (randomNumber == 0)
             {
                 randomNumber = Random.Range(0, 6);
@@ -88,6 +105,7 @@ public class EarthquakeGame : MonoBehaviour
         if (randomNumber == 1)
         {
             perfectKlicks++;
+            sound.Play();
             while (randomNumber == 1)
             {
                 randomNumber = Random.Range(0, 6);
@@ -102,6 +120,7 @@ public class EarthquakeGame : MonoBehaviour
         if (randomNumber == 2)
         {
             perfectKlicks++;
+            sound.Play();
             while (randomNumber == 2)
             {
                 randomNumber = Random.Range(0, 6);
@@ -116,6 +135,7 @@ public class EarthquakeGame : MonoBehaviour
         if (randomNumber == 3)
         {
             perfectKlicks++;
+            sound.Play();
             while (randomNumber == 3)
             {
                 randomNumber = Random.Range(0, 6);
@@ -130,6 +150,7 @@ public class EarthquakeGame : MonoBehaviour
         if (randomNumber == 4)
         {
             perfectKlicks++;
+            sound.Play();
             while (randomNumber == 4)
             {
                 randomNumber = Random.Range(0, 6);
@@ -145,6 +166,7 @@ public class EarthquakeGame : MonoBehaviour
         if (randomNumber == 5)
         {
             perfectKlicks++;
+            sound.Play();
             while (randomNumber == 5)
             {
                 randomNumber = Random.Range(0, 6);

@@ -21,7 +21,7 @@ public class Astriod : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Object.Destroy(gameObject, 5.0f);
+        Object.Destroy(gameObject, 2f);
     }
 
     private void OnCollisionEnter(Collision collision)
