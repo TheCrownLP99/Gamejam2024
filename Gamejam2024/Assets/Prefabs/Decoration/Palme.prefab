@@ -336,6 +336,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2770902100471960328, guid: 0ff0c2cc237aa54448766000fee0c7bd,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.09609984
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770902100471960328, guid: 0ff0c2cc237aa54448766000fee0c7bd,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.09609984
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770902100471960328, guid: 0ff0c2cc237aa54448766000fee0c7bd,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.09609984
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770902100471960328, guid: 0ff0c2cc237aa54448766000fee0c7bd,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -382,6 +397,21 @@ PrefabInstance:
     - target: {fileID: 2770902100471960328, guid: 0ff0c2cc237aa54448766000fee0c7bd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662045679663976777, guid: 0ff0c2cc237aa54448766000fee0c7bd,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662045679663976777, guid: 0ff0c2cc237aa54448766000fee0c7bd,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662045679663976777, guid: 0ff0c2cc237aa54448766000fee0c7bd,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8891625801113105606, guid: 0ff0c2cc237aa54448766000fee0c7bd,
